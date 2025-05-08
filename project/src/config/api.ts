@@ -1,5 +1,7 @@
 
-export const API_URL = `http://localhost:${import.meta.env.VITE_API_PORT}/api`;
+export const API_URL = import.meta.env.VITE_API_BASE_URL
+  ? `${import.meta.env.VITE_API_BASE_URL}/api`
+  : `http://localhost:${import.meta.env.VITE_API_PORT}/api`;
 
 export const API_ENDPOINTS = {
   auth: {
@@ -24,4 +26,4 @@ export const API_ENDPOINTS = {
     myApplications: '/applications/my-applications',
     employerApplications: (jobId: string) => `/applications/job/${jobId}`,
   },
-}; 
+};
