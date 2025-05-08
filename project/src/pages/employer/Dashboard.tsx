@@ -172,8 +172,13 @@ const EmployerDashboard = () => {
 
       setDeletingJob(jobId);
       const response = await fetch(`${API_URL}/jobs/${jobId}`, {
- {
-= await response.json();
+        method: 'DELETE',
+        headers: {
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json'
+        }
+      });
+      const data = await response.json();
       if (!response.ok) {
         throw new Error(data.message || 'Failed to delete job');
       }
